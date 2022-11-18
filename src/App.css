@@ -29,7 +29,7 @@
 
 .Fortune-box-wrap {
   border: 1px solid transparent;
-  border-image: linear-gradient(45deg, #ECC440, #FFFF95);
+  border-image: linear-gradient(to right, #ECC440 0%, #FFFA8A 25%, #DDAC17 50%, #FFFF95 100%);
   border-image-slice: 1;
 }
 
@@ -50,4 +50,24 @@
   bottom: 0;
   right: 0;
   padding: 1rem;
+}
+
+.App-button {
+  background-image: linear-gradient(to right, #ECC440 0%, #FFFA8A 25%, #DDAC17 50%, #FFFF95 100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: 141003;
+  border-radius: 10px;
+  display: block;
+}
+
+.App-button:hover {
+  background-position: right center;
+  color: #8f751b;
+  text-decoration: none;
+  box-shadow: 0 0 20px #8f751b;
 }
