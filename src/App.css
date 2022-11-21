@@ -71,3 +71,61 @@
   text-decoration: none;
   box-shadow: 0 0 20px #8f751b;
 }
+
+/* .App-settings-button {
+  background-color: #141003;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 10px;
+} */
+
+.App-settings-button {
+  font-size: 1.25em;
+  font-weight: bold;
+  line-height: 1;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: .1875em solid;
+  padding: 1em;
+  margin: 0.5em;
+  color: #ECC440;
+  background: transparent;
+  border-radius: .125em;
+  transition: background .3s;
+}
+
+.App-settings-button:hover,
+.App-settings-button:focus {
+  color: #141003;
+  background: #ECC440;
+  border-color: #ECC440;
+}
+
+.App-settings-button:active {
+  top: .08em;
+}
+
+.svg-icon {
+  /* Place the icon on the text baseline. */
+  position: relative;
+  top: .125em;
+
+  /* Prevent the icon from shrinking inside a flex container. */
+  flex-shrink: 0;
+
+  /* Scale the icon to match the font-size of the parent element. */
+  height: 1em;
+  width: 1em;
+
+  /* Let the icon take whatever color the parent has. */
+  fill: currentColor;
+
+  /*
+   * If the icon is used on a link, which has a color transition,
+   * we can also use a transition on the fill value.
+  */
+  transition: fill .3s;
+}
