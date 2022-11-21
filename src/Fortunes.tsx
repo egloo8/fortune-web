@@ -3,15 +3,15 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
-import { fortunesString } from "./fortunesString";
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "./firebase";
 
 interface Props {
   isAutoChecked: boolean;
 }
 
 function Fortunes({ isAutoChecked }: Props) {
-  const fortunes = fortunesString.split("%\n");
+  const [fortunes, setFortunes] = useState<Array<string>>([]);
   const fortuneLength = fortunes.length;
 
   const getRadomNumberForArray = useCallback(() => {
@@ -29,6 +29,22 @@ function Fortunes({ isAutoChecked }: Props) {
 
     return () => clearInterval(intervalId);
   }, [isAutoChecked, setRandomNumberForArray, getRadomNumberForArray]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const q = query(collection(db, "fortunes"));
+      const querySnapshot = await getDocs(q);
+      const fortunesArray: Array<string> = [];
+      querySnapshot.forEach((doc) => {
+        fortunesArray.push(doc.data().fortune);
+      });
+
+      setFortunes(fortunesArray);
+    };
+
+    fetchData()
+      .catch(console.error);
+  }, []);
 
   return (
     <Box

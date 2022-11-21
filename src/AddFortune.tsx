@@ -8,6 +8,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { db } from "./firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 function AddFortune() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -17,8 +19,11 @@ function AddFortune() {
     setFortune(event.target.value);
   };
 
-  const handleSubmit = () => {
-    setIsDialogOpen(false);
+  const handleSubmit = async () => {
+    await addDoc(collection(db, "fortunes"), {
+      fortune: fortune,
+      created: Timestamp.now(),
+    }).then(() => setIsDialogOpen(false));
   };
 
   return (
