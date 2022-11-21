@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import Link from "@mui/material/Link";
 
 import logo from "./lib/logo.svg";
-// import "./App.css";
 
 import Fortunes from "./Fortunes";
 
@@ -18,10 +18,16 @@ function App() {
 
   return (
     <Box sx={{ backgroundColor: "background.paper", minHeight: "100vh" }}>
-      <header className="App-header">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Have your fortune told here!</p>
-      </header>
+      </Box>
       <Fortunes isAutoChecked={isAutoChecked} />
       <Box
         sx={{
@@ -35,21 +41,31 @@ function App() {
       >
         <FormControlLabel
           control={<Switch checked={isAutoChecked} onChange={handleChange} />}
-          label="Automatic reload"
+          label="Auto reload"
         />
       </Box>
-      <footer className="App-footer">
-        Using fortunes from{" "}
-        <a
-          className="App-link"
-          href="https://github.com/bmc/fortunes"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          bmc
-        </a>
-        .
-      </footer>
+      <Box
+        sx={{
+          color: "primary.main",
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          p: "1rem",
+        }}
+      >
+        <Typography variant="caption">
+          Using fortunes from{" "}
+          <Link
+            href="https://github.com/bmc/fortunes"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="secondary.main"
+          >
+            bmc
+          </Link>
+          .
+        </Typography>
+      </Box>
     </Box>
   );
 }
