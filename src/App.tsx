@@ -8,6 +8,7 @@ import Link from "@mui/material/Link";
 import logo from "./lib/logo.svg";
 
 import Fortunes from "./Fortunes";
+import AddFortune from "./AddFortune";
 
 function App() {
   const [isAutoChecked, setIsAutoChecked] = useState(false);
@@ -17,7 +18,8 @@ function App() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "background.paper", minHeight: "100vh" }}>
+    <Box sx={{ backgroundColor: "background.default", minHeight: "100vh" }}>
+      <AddFortune />
       <Box
         sx={{
           display: "flex",
