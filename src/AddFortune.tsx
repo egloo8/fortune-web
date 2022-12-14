@@ -19,11 +19,16 @@ function AddFortune() {
     setFortune(event.target.value);
   };
 
+  const handleCloseAndClear = () => {
+    setFortune("");
+    setIsDialogOpen(false);
+  };
+
   const handleSubmit = async () => {
     await addDoc(collection(db, "fortunes"), {
       fortune: fortune,
       created: Timestamp.now(),
-    }).then(() => setIsDialogOpen(false));
+    }).then(() => handleCloseAndClear());
   };
 
   return (
@@ -66,7 +71,7 @@ function AddFortune() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setIsDialogOpen(false)}>Cancel</Button>
+          <Button onClick={() => handleCloseAndClear()}>Cancel</Button>
           <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
